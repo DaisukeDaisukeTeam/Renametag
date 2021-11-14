@@ -35,7 +35,7 @@ class Main extends PluginBase implements Listener{
 		$config = $this->myConfig;
 		if($label === "atama"){
 			if(isset($args[0])){
-				$player = $this->getServer()->getPlayerExact($args[0]);
+				$player = $this->getServer()->getPlayerByPrefix($args[0]);
 				if($player === null){
 					$sender->sendMessage($args[0]."様は現在サーバーに参加していない為、ネームタグの編集を実施を事はできません。");
 					return true;
@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener{
 					$player->setNameTag("[§d".$tag."§r]".$player->getName());
 					$player->setDisplayName("[§d".$tag."§r]".$player->getName());
 				}else{
-					$player = $this->getServer()->getPlayerExact($args[0]);
+					$player = $this->getServer()->getPlayerByPrefix($args[0]);
 					$config->set($player->getName(), $player->getName());
 					$config->save();
 
