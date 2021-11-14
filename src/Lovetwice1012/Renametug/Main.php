@@ -15,7 +15,7 @@ class Main extends PluginBase implements Listener{
 	private $fly;
 	public $myConfig;
 		       
-	public function onEnable(){
+	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
        
 		$this->myConfig = new Config($this->getDataFolder() . "MyConfig.yml", Config::YAML);
@@ -36,17 +36,17 @@ class Main extends PluginBase implements Listener{
 	{
 		$config = $this->myConfig;
         if ($label === "atama") {
-            if ($sender->isOp()) {
+            if ($this->getServer()->isOp($sender)) {
 		if(isset($args[0])){
 		if(isset($args[1])){    
-			$player = $this->getServer()->getPlayer($args[0]);
+			$player = $this->getServer()->getPlayerExact($args[0]);
                     $tag = $args[1]; 
 		    $config->set($player->getName(), "[§d".$tag."§r]".$player->getName());
 		    $config->save();
 		    $player->setNameTag("[§d".$tag."§r]".$player->getName());
 		    $player->setDisplayName("[§d".$tag."§r]".$player->getName());
 		}else{
-			$player = $this->getServer()->getPlayer($args[0]);
+			$player = $this->getServer()->getPlayerExact($args[0]);
 			$config->set($player->getName(),$player->getName());
 			$config->save();
                
