@@ -5,8 +5,11 @@ api: [3.0.0, 4.0.0]
 load: POSTWORLD
 author: Lovetwice1012
 description: 頭の上変更
-
 commands:
   atama:
     description: 頭の上を変更します。
     usage: /atama 変更したいユーザーの名前　変更後の頭の上に表示される文章
+    permission: renametag.command.atama
+permissions:
+  renametag.command.atama:
+    default: op
